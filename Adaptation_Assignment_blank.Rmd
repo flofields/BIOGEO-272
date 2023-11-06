@@ -46,7 +46,7 @@ If floral morphology is an adaptation to differently sized pollinator communitie
 The results of the study include the average style length for each population (including the standard error) as well as the average visitor length (including the standard error) for each population. All measurements were in millimeters.
 
 ```{r Trait-environment correlation import, message=FALSE, warning=FALSE}
-style.length <- read.csv("https://raw.githubusercontent.com/flofields/BIOGEO-272/main/style_length.csv")
+style_length <- read.csv("https://raw.githubusercontent.com/flofields/BIOGEO-272/main/style_length.csv")
 ```
 
 ------------------------------------------------------------------------
@@ -56,7 +56,7 @@ style.length <- read.csv("https://raw.githubusercontent.com/flofields/BIOGEO-272
 Make a scatter plot showing the relationship between visitor length and style length. Add error bars (both in x and y directions) and add a regression line to complete the graph.
 
 ```{r Trait-environment correlation plot, message=FALSE, warning=FALSE}
-ggplot(style.length, aes(x=?, y=?)) +
+ggplot(style_length, aes(x=?, y=?)) +
     geom_point() + 
     xlab("?") +
     ylab("?") +
