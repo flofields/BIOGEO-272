@@ -1,0 +1,181 @@
+---
+title: "Adaptation and Phenotypic Plasticity"
+output:
+  html_notebook:
+    fig_caption: yes
+    toc: yes
+    toc_depth: 3
+    toc_float: yes
+  pdf_document:
+    toc: yes
+    toc_depth: '3'
+  html_document:
+    keep_md: TRUE
+---
+
+## Author: Your name and student ID
+
+------------------------------------------------------------------------
+
+# 1. Initiate the project
+
+```{r message=FALSE, warning=FALSE}
+#Load the required packages
+library(ggplot2)
+```
+
+------------------------------------------------------------------------
+
+# 2. Local Adaptation of Floral Ecotypes
+
+The evolution of flower morphology is thought to be driven by pollinators. Geographic variation in pollinator communities may therefore cause divergent selection on flower attributes, with floral traits maximizing fertilization being adaptive. *Nerine humilis* (Amaryllidaceae) is a South African plant species with considerable variation in flower morphology across populations. In particular, there are two distinct floral ecotypes, one with a short style and one with a long style. Natural history observations have suggested that pollinators of different sizes may obtain nectar without contacting the reproductive parts of the flower. Hence, researchers have hypothesized that variation in floral morphology in this case is an adaptation to different pollinator communities that vary in body size. Ethan Newman and colleagues conducted a series of experiments to test this hypothesis in natural populations.
+
+![Flowers from the two populations, being visited by long proboscid flies and honey bees. (A) The long‐proboscid fly *Prosoeca longipennis* visiting the native long‐style phenotype of Nerine humilis, where the stigma makes contact with the abdomen of the fly. (B) Prosoeca longipennis visiting an introduced short‐style phenotype during a single visitation experiment. Here, the fly is thieving nectar because it makes no contact with the mature stigma. Note that the anthers have been removed. (C) Honey bees, Apis mellifera, were occasionally observed visiting the native long‐style phenotype, where they seldom make contact with the reproductive parts of the flowers and pollen was not placed on their abdomens. (D) A honey bee visiting the native short‐style phenotype of N. humilis. Notice pollen deposition on the abdomen of the bee. https://github.com/flofields/BIOGEO-272/blob/main/flowers.jpg
+
+------------------------------------------------------------------------
+
+## 2.1. Trait-Environment Correlation
+
+If floral morphology is an adaptation to differently sized pollinator communities, there should be a correlation between average pollinator size and the average style size across *N. humilis* populations. To test this idea, Newman et al. visited a number of geographically disjunct *N. humilis* populations. They measured the style length of flowers as well as the body size of insect pollinators that were visiting the flowers. In this section of the exercise, you will plot and interpret the results of their study.
+
+------------------------------------------------------------------------
+
+### 2.1.1. Import Data
+
+The results of the study include the average style length for each population (including the standard error) as well as the average visitor length (including the standard error) for each population. All measurements were in millimeters.
+
+```{r Trait-environment correlation import, message=FALSE, warning=FALSE}
+style.length <- read.csv("https://raw.githubusercontent.com/flofields/BIOGEO-272/main/style_length.csv")
+```
+
+------------------------------------------------------------------------
+
+### 2.1.2. Plot Data
+
+Make a scatter plot showing the relationship between visitor length and style length. Add error bars (both in x and y directions) and add a regression line to complete the graph.
+
+```{r Trait-environment correlation plot, message=FALSE, warning=FALSE}
+ggplot(style.length, aes(x=?, y=?)) +
+    geom_point() + 
+    xlab("?") +
+    ylab("?") +
+    theme_classic()
+```
+
+------------------------------------------------------------------------
+
+### 2.1.3. Interpretation
+
+What do you observe? Are the results consistent with the hypothesis that pollinator size drives the evolution of style size? What are some of the caveats, and how could you address them?
+
+***Your answer goes here.***
+
+------------------------------------------------------------------------
+
+## 2.2. Reciprocal Translocation Experiment
+
+Trait-environment correlations are an important puzzle piece when we try to understand local adaptation and the forces that might be driving trait evolution. But by themselves, they offer limited insights, because correlation does not imply causation. Hence, Newman et al. followed up on their field study and conducted a reciprocal translocation experiment. They planted some short-style plants in a habitat dominated by long-style plants, and vice versa. Then they let the local pollinator community do its job. At the end of the flowering season, they harvested seed pots from all experimental plants and the counted how many ovules were actually fertilized. If flower morphology was an adaptation to different pollinator communities, we would expect that flowers with large styles have higher fertilization success in locations with large pollinators, and flowers with short styles have higher fertilization success in locations with smaller pollinators.
+
+------------------------------------------------------------------------
+
+### 2.2.1. Import Data
+
+The results of the study include fertilization rate (fertilized ovules per capsule divided by total ovules per capsule). Experimental groups were defined by the following variables: locality (large visitor location vs. small visitor location) and flower phenotype (long style vs. short style).
+
+```{r Translocation import, message=FALSE, warning=FALSE}
+translocation <- read.csv("https://raw.githubusercontent.com/flofields/BIOGEO-272/main/reciprocal_translocation.csv")
+```
+
+------------------------------------------------------------------------
+
+### 2.2.2. Plot Data
+
+Plot the fertilization rates across different experimental groups using box plots.
+
+```{r Translocation plot, message=FALSE, warning=FALSE}
+ggplot(translocation, aes(x=?, y=?, fill=?)) +
+    geom_boxplot() +
+    xlab("?") +
+    ylab("?") +
+    theme_classic() 
+```
+
+------------------------------------------------------------------------
+
+### 2.2.3. Interpretation
+
+What do you observe? Are the results consistent with the hypothesis that pollinator size drives the evolution of style size? What are some of the caveats, and how could you address them?
+
+***Your answer goes here.***
+
+------------------------------------------------------------------------
+
+# 3. Adaptation to Predation in Guppies
+
+The guppy (*Poecilia reticulata*) is a small livebearing fish of the family Poeciliidae. On the island of Trinidad, it is one of the most abundant species, occurring in multiple river drainages. In lowland habitats, guppies live in diverse fish communities with lots of predators, including pike cichlids (*Crenicichla alta*) and other species. In the headwaters, fish communities are much simpler, and guppies are often the only fish species present, sometimes along with killifish (*Rivulus hartii*) that can prey upon juvenile but not adult guppies. Lowland and head-water habitats are typically separated by a series of waterfalls, limiting gene flow between populations in the same river drainage.
+
+A wealth of research has investigated the evolutionary responses of guppies to the divergent predation environments. Results have shown that phenotypic differences evolve rapidly between populations, and phenotypic differences include changes in male coloration (less colorful in high predation populations), fecundity (higher) and offspring size (lower in high predation populations), and size at maturity (lower in high predation populations). In high-predation environments, a small size at maturity is adaptive, because it allows individuals to reproduce as fast as possible, before potentially falling victim to a predator attack. In low-predation environments, a larger size at maturity is adaptive, because guppies can actually outgrow the mouth size of potential predators, and larger individuals can produce more offspring.
+
+While the patterns of phenotypic variation in nature and their potential fitness benefits are well understood, we know much less about the potential role of phenotypic plasticity in shaping population differentiation. A group of researchers around Julian Torres-Dowdall set out to quantify the role of phenotypic plasticity using a common-garden experiment. They brought back guppies from high-predation and low-predation habitats of two river drainages (Guanapo and Yarra). In the laboratory, they let females give birth to offspring, and offspring were then assigned to either of two experimental treatments: 1) Environments mimicking a low-predation habitat (just stocked with guppies) and 2) environments mimicking a high-predation habitat (including a physically separated predator that was fed with guppies, such that guppies were exposed to predator cues but not the predator itself). The researchers ultimately measured the standard length (body size) of guppies at maturation. In this exercise you will plot and interpret the results of their study.
+
+https://github.com/flofields/BIOGEO-272/blob/main/guppies.png
+
+------------------------------------------------------------------------
+
+## 3.1. Import Data
+
+The results of the experiment include a measurement of age at maturity (sl, standard length in mm). Experimental groups were defined by the following variables: drainage (Guanapo or Yarra), habitat (high-predation or low-predation), and experimental treatment (predator cue present or absent).
+
+```{r Phenotypic plasticity in guppies import, message=FALSE, warning=FALSE}
+guppy <- read.csv("https://raw.githubusercontent.com/flofields/BIOGEO-272/main/guppy_plasticity2.csv") 
+```
+
+------------------------------------------------------------------------
+
+## 3.2. Plot Data
+
+Plot the size at maturity across different experimental groups using boxplots. Note that you can generate separate plots for the different drainages using the `facet_wrap()` function ([see textbook](https://www.k-state.edu/biology/p2e/adaptation-and-phenotypic-plasticity.html#practical-skills-more-variables-more-graphs)).
+
+```{r Phenotypic plasticity in guppies plot, message=FALSE, warning=FALSE}
+# Your code goes here
+```
+
+Briefly summarize the results verbally.
+
+***Your answer goes here.***
+
+------------------------------------------------------------------------
+
+## 3.3. Interpretation
+
+Are population differences in size at maturation between low and high-predation environments the consequences of phenotypic plasticity or local adaptation?
+
+***Your answer goes here.***
+
+Assuming that high-predation populations are ancestral, what does the experiment tell you about the evolution of phenotypic plasticity?
+
+***Your answer goes here.***
+
+What are potential reasons that the results of the experiment differs between the two drainages?
+
+***Your answer goes here.***
+
+------------------------------------------------------------------------
+
+# 4. Resources
+
+------------------------------------------------------------------------
+
+## 4.1. Data References
+
+Trait-environment correlation and translocation data came from the following study:
+
+-   Newman E, Manning J, Anderson B. 2015. [Local adaptation: mechanical fit between floral ecotypes of *Nerine humilis* (Amaryllidaceae) and pollinator communities](https://onlinelibrary.wiley.com/doi/full/10.1111/evo.12736). *Evolution* 69: 2262-2275.
+
+Results from the guppy common garden experiment came from the following study:
+
+-   Torres‐Dowdall J, Handelsman CA, Reznick DN, Ghalambor CK. 2012. [Local adaptation and the evolution of phenotypic plasticity in Trinidadian guppies (*Poecilia reticulata*)](https://onlinelibrary.wiley.com/doi/10.1111/j.1558-5646.2012.01694.x). *Evolution* 66: 3432-3443.
+
+------------------------------------------------------------------------
+
+
