@@ -21,7 +21,8 @@ output:
 
 ```{r message=FALSE, warning=FALSE}
 #Load the required packages
-library(ggplot2)
+library(tidyverse)
+library(readr)
 ```
 
 ------------------------------------------------------------------------
